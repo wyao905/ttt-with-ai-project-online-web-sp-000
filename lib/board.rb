@@ -1,3 +1,5 @@
+require 'pry'
+
 class Board
   attr_accessor :cells
   
@@ -35,7 +37,7 @@ class Board
   end
   
   def taken?(input)
-    if cells[input.to_i - 1] != " "
+    if position(input) != " "
       true
     else
       false

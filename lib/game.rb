@@ -35,18 +35,45 @@ class Game
   end
   
   def draw?
-    if won?
+    if !won? && board.full?
+      true
+    else
+      false
+    end
+  end
+  
+  def over?
+    if draw? || won?
+      true
+    else
+      false
+    end
   end
   
   def winner
-  end
-  
-  def start
-  end
-  
-  def play
+    if won?
+      board.cells[won?[0]]
+    else
+      nil
+    end
   end
   
   def turn
+    current_move = current_player.move(board)
+    while board.valid_move?(current_move) != true do
+      current_move = current_player.move(board)
+    end
+    board.update(current_move, current_player)
+  end
+  
+  def play
+    while over? == false do
+      turn
+    end
+    if winner
+      puts "Congratulations #{winner}!"
+    else
+      puts "Cat's Game!"
+    end
   end
 end
