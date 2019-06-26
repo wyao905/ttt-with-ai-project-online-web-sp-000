@@ -45,6 +45,7 @@ class Board
   end
   
   def valid_move?(input)
+    binding.pry
     pos = input.to_i
     if pos >= 1 && pos <= 9 && !taken?(input)
       true

@@ -40,6 +40,7 @@ class Game
     else
       false
     end
+<<<<<<< HEAD
   end
   
   def over?
@@ -74,6 +75,29 @@ class Game
       puts "Congratulations #{winner}!"
     else
       puts "Cat's Game!"
+=======
+  end
+  
+  def over?
+    if draw? || won?
+      true
+    else
+      false
+    end
+  end
+  
+  def winner
+    if won?
+      board.cells[won?[0]]
+    else
+      nil
+    end
+  end
+  
+  def turn
+    if board.valid_move?
+      move - 1
+>>>>>>> afa84eb713bbca43f23d330bd06c507f86aff177
     end
   end
 end
