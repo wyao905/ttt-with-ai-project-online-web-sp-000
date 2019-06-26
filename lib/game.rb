@@ -74,6 +74,7 @@ class Game
       puts "Congratulations #{winner}!"
     else
       puts "Cat's Game!"
+    end
   end
   
   def over?
