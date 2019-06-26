@@ -76,4 +76,42 @@ class Game
       puts "Cat's Game!"
     end
   end
+  
+  def over?
+    if draw? || won?
+      true
+    else
+      false
+    end
+  end
+  
+  def winner
+    if won?
+      board.cells[won?[0]]
+    else
+      nil
+    end
+  end
+  
+  def start
+    puts "Welcome, enter number of players:"
+    puts "0 | 1 | 2"
+    num = gets.strip.to_i
+    case num
+    when 0
+      Game.new(Players::Computer.new("X"), Players::Computer.new("O"), Board.new)
+    when 1
+      puts "Who will be Player 1?"
+      puts "computer | human"
+      player_1 = gets.strip
+      case player_1
+      if player_1 == "computer"
+        Game.new(Players::Computer.new("X"), Players::Human.new("O"), Board.new)
+      else
+        Game.new(Players::Human.new("X"), Players::Computer.new("O"), Board.new)
+      end
+    when 2
+      Game.new(Players::Human.new("X"), Players::Human.new("O"), Board.new)
+    end
+  end
 end
